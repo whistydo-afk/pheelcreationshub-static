@@ -3,845 +3,2157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pheel Creations Hub — Nakuru's Creative Engine</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Pheel Creations Hub — Home for Creativity, Empowerment & Innovation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --amber: #E8823A;
-    --amber-light: #F4A261;
-    --cream: #FAF5EC;
-    --charcoal: #1A1A18;
-    --forest: #2D4A3E;
-    --gold: #C9963A;
-    --warm-gray: #8C7B6E;
-    --pale: #F0E8D8;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    background: var(--charcoal);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 60px 60px 80px;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(232,130,58,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201,150,58,0.12) 0%, transparent 60%);
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 8vw, 110px);
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 0.92;
-    letter-spacing: -2px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.4s forwards;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--amber-light);
-  }
-
-  .hero-sub {
-    margin-top: 36px;
-    max-width: 540px;
-    font-size: 17px;
-    font-weight: 300;
-    color: rgba(250,245,236,0.7);
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.6s forwards;
-  }
-
-  .hero-meta {
-    margin-top: 60px;
-    display: flex;
-    gap: 48px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.8s forwards;
-  }
-
-  .hero-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .hero-stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--amber);
-  }
-
-  .hero-stat-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(250,245,236,0.5);
-  }
-
-  .hero-badge {
-    position: absolute;
-    top: 60px;
-    right: 60px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(232,130,58,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 1s 1s forwards, spin 20s linear infinite;
-  }
-
-  .hero-badge-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--amber-light);
-    line-height: 1.6;
-  }
-
-  /* TAGLINE STRIP */
-  .strip {
-    background: var(--amber);
-    padding: 16px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .strip-inner {
-    display: inline-flex;
-    animation: marquee 18s linear infinite;
-  }
-
-  .strip-item {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--charcoal);
-    padding: 0 40px;
-  }
-
-  .strip-dot {
-    color: var(--charcoal);
-    opacity: 0.4;
-  }
-
-  /* SECTION BASE */
-  section {
-    padding: 100px 60px;
-  }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    height: 1px;
-    width: 40px;
-    background: var(--amber);
-    opacity: 0.5;
-  }
-
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -1px;
-  }
-
-  /* ABOUT SECTION */
-  .about {
-    background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .about-right p {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: #4A4035;
-    margin-bottom: 24px;
-  }
-
-  .about-right p strong {
-    color: var(--charcoal);
-    font-weight: 500;
-  }
-
-  .about-pull {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-style: italic;
-    color: var(--forest);
-    line-height: 1.4;
-    border-left: 3px solid var(--amber);
-    padding-left: 28px;
-    margin-top: 40px;
-  }
-
-  /* PILLARS */
-  .pillars {
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-
-  .pillars h2 { color: var(--cream); }
-  .pillars .section-label { margin-bottom: 20px; }
-
-  .pillars-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 70px;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .pillars-intro {
-    max-width: 400px;
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(250,245,236,0.6);
-    line-height: 1.7;
-  }
-
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-  }
-
-  .pillar {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    padding: 40px 30px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: default;
-  }
-
-  .pillar:hover {
-    background: rgba(232,130,58,0.08);
-    border-color: rgba(232,130,58,0.3);
-  }
-
-  .pillar-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--amber);
-    letter-spacing: 2px;
-    margin-bottom: 28px;
-  }
-
-  .pillar-icon {
-    font-size: 32px;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .pillar h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .pillar p {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(250,245,236,0.55);
-    line-height: 1.75;
-  }
-
-  .pillar-list {
-    margin-top: 16px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .pillar-list li {
-    font-size: 13px;
-    color: rgba(250,245,236,0.45);
-    padding-left: 16px;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .pillar-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-    opacity: 0.6;
-  }
-
-  /* WHAT MAKES US DIFFERENT */
-  .difference {
-    background: var(--pale);
-  }
-
-  .difference-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 60px;
-  }
-
-  .diff-card {
-    padding: 40px 32px;
-    background: var(--cream);
-    border-radius: 4px;
-    border-bottom: 3px solid var(--amber);
-    transition: transform 0.3s;
-  }
-
-  .diff-card:hover { transform: translateY(-6px); }
-
-  .diff-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 21px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--charcoal);
-  }
-
-  .diff-card p {
-    font-size: 14.5px;
-    font-weight: 300;
-    color: var(--warm-gray);
-    line-height: 1.75;
-  }
-
-  /* IMPACT */
-  .impact {
-    background: var(--forest);
-    color: var(--cream);
-  }
-
-  .impact h2 { color: var(--cream); }
-
-  .impact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.1);
-    margin-top: 60px;
-  }
-
-  .impact-stat {
-    background: var(--forest);
-    padding: 50px 40px;
-    text-align: center;
-  }
-
-  .impact-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
-    font-weight: 900;
-    color: var(--amber-light);
-    line-height: 1;
-    display: block;
-  }
-
-  .impact-label {
-    font-size: 13px;
-    font-weight: 300;
-    color: rgba(250,245,236,0.6);
-    margin-top: 12px;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
-
-  .impact-desc {
-    max-width: 700px;
-    font-size: 17px;
-    font-weight: 300;
-    color: rgba(250,245,236,0.7);
-    line-height: 1.8;
-    margin: 60px auto 0;
-    text-align: center;
-  }
-
-  /* REVENUE MODEL */
-  .revenue {
-    background: var(--cream);
-  }
-
-  .revenue-intro {
-    max-width: 600px;
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--warm-gray);
-    line-height: 1.8;
-    margin: 20px 0 60px;
-  }
-
-  .revenue-streams {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .stream {
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 4px;
-    padding: 32px;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .stream:hover {
-    border-color: var(--amber);
-    box-shadow: 0 4px 24px rgba(232,130,58,0.1);
-  }
-
-  .stream-icon {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-
-  .stream h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .stream p {
-    font-size: 14px;
-    color: var(--warm-gray);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* VISION */
-  .vision {
-    background: var(--amber);
-    padding: 120px 60px;
-    text-align: center;
-  }
-
-  .vision h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(40px, 6vw, 80px);
-    font-weight: 900;
-    color: var(--charcoal);
-    line-height: 1.05;
-    max-width: 900px;
-    margin: 0 auto 32px;
-  }
-
-  .vision h2 em {
-    font-style: italic;
-    color: var(--cream);
-  }
-
-  .vision p {
-    font-size: 18px;
-    color: rgba(26,26,24,0.7);
-    max-width: 560px;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--charcoal);
-    padding: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--cream);
-  }
-
-  .footer-brand span { color: var(--amber); }
-
-  .footer-info {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(250,245,236,0.4);
-    text-align: right;
-    line-height: 1.8;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    section { padding: 70px 28px; }
-    .hero { padding: 40px 28px 60px; }
-    .hero-badge { display: none; }
-    .about { grid-template-columns: 1fr; gap: 40px; }
-    .pillars-grid { grid-template-columns: 1fr 1fr; }
-    .difference-grid { grid-template-columns: 1fr; }
-    .impact-grid { grid-template-columns: 1fr; }
-    .revenue-streams { grid-template-columns: 1fr; }
-    .pillars-header { flex-direction: column; }
-    footer { flex-direction: column; text-align: center; }
-    .footer-info { text-align: center; }
-  }
-
-  @media (max-width: 540px) {
-    .pillars-grid { grid-template-columns: 1fr; }
-    .hero-meta { flex-wrap: wrap; gap: 28px; }
-  }
+:root {
+  --green: #1B6B3A;
+  --green-dark: #134D2A;
+  --green-light: #2A8C4E;
+  --gold: #C9963A;
+  --gold-light: #E0B060;
+  --black: #111410;
+  --white: #FFFFFF;
+  --off-white: #F8F6F0;
+  --gray: #6B6B5E;
+  --light-gray: #E8E4D8;
+  --green-tint: #EBF3EE;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+
+/* ========== NAV ========== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(17,20,16,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,150,58,0.2);
+  padding: 0 48px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-logo-mark {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 900;
+  color: var(--gold);
+}
+
+.nav-brand-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.nav-brand-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--white);
+  background: rgba(201,150,58,0.15);
+}
+
+.nav-links li a.active { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+  border-radius: 4px !important;
+}
+
+.nav-cta:hover { background: var(--gold-light) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
+}
+
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ========== PAGES ========== */
+.page { display: none; padding-top: 68px; }
+.page.active { display: block; }
+
+/* ========== STRIP ========== */
+.marquee-strip {
+  background: var(--green);
+  padding: 12px 0; overflow: hidden; white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  padding: 0 36px;
+}
+
+.marquee-dot { color: var(--gold); }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: calc(100vh - 68px);
+  background: var(--black);
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(27,107,58,0.25) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 5% 85%, rgba(201,150,58,0.12) 0%, transparent 60%);
+}
+
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: ''; width: 30px; height: 1px;
+  background: var(--gold);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7.5vw, 106px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 0.93;
+  letter-spacing: -2px;
+  opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero h1 .green-word { color: var(--green-light); }
+
+.hero-tagline {
+  margin-top: 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  opacity: 0; animation: fadeUp 0.9s 0.55s forwards;
+}
+
+.hero-desc {
+  margin-top: 24px;
+  max-width: 520px;
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  opacity: 0; animation: fadeUp 0.9s 0.65s forwards;
+}
+
+.hero-actions {
+  margin-top: 48px;
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+  font-size: 14px; font-weight: 600;
+  padding: 14px 32px;
+  border: none; border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  font-size: 14px; font-weight: 500;
+  padding: 14px 32px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.hero-stats {
+  margin-top: 72px;
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 48px;
+  opacity: 0; animation: fadeUp 0.9s 1s forwards;
+}
+
+.hero-stat {
+  padding-right: 48px;
+  margin-right: 48px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 6px;
+  display: block;
+}
+
+/* ========== SECTION SHARED ========== */
+.section-wrap { padding: 100px 60px; }
+.section-wrap.dark { background: var(--black); }
+.section-wrap.green { background: var(--green); }
+.section-wrap.tint { background: var(--green-tint); }
+.section-wrap.off { background: var(--off-white); }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.section-label::after {
+  content: ''; height: 1px; width: 36px;
+  background: var(--gold); opacity: 0.5;
+}
+
+.dark .section-label { color: var(--gold); }
+.green .section-label { color: rgba(255,255,255,0.6); }
+.green .section-label::after { background: rgba(255,255,255,0.4); }
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.dark h2.section-title { color: var(--white); }
+.green h2.section-title { color: var(--white); }
+
+/* ========== HOME — INTRO ========== */
+.home-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.home-intro-right p {
+  font-size: 16.5px; font-weight: 300;
+  line-height: 1.85;
+  color: #4A4A3A;
+  margin-bottom: 22px;
+}
+
+.home-intro-right p strong {
+  color: var(--black); font-weight: 600;
+}
+
+.pull-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-style: italic;
+  color: var(--green);
+  line-height: 1.45;
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin-top: 36px;
+}
+
+/* ========== HOME — PILLARS PREVIEW ========== */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+
+.pillar-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 40px 28px;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.pillar-card::after {
+  content: 'Explore →';
+  display: block;
+  margin-top: 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pillar-card:hover::after { opacity: 1; }
+
+.pillar-card:hover {
+  background: rgba(27,107,58,0.15);
+  border-color: rgba(201,150,58,0.35);
+  transform: translateY(-4px);
+}
+
+.pillar-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--gold);
+  letter-spacing: 2px; margin-bottom: 24px;
+}
+
+.pillar-icon { font-size: 30px; margin-bottom: 16px; display: block; }
+
+.pillar-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--white); margin-bottom: 12px; line-height: 1.2;
+}
+
+.pillar-card p {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.5); line-height: 1.7;
+}
+
+/* ========== SCHOOLS PREVIEW ========== */
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.school-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px 28px;
+  border-top: 4px solid var(--green);
+  transition: all 0.3s;
+}
+
+.school-card:hover {
+  border-top-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(27,107,58,0.1);
+  transform: translateY(-4px);
+}
+
+.school-emoji { font-size: 28px; margin-bottom: 16px; display: block; }
+
+.school-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--green); margin-bottom: 12px; line-height: 1.2;
+}
+
+.school-card p {
+  font-size: 13.5px; color: var(--gray);
+  line-height: 1.7; font-weight: 300; margin-bottom: 16px;
+}
+
+.school-courses {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--gold); text-transform: uppercase;
+}
+
+/* ========== SERVICES ========== */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.service-item {
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px 32px;
+  display: flex; gap: 24px;
+  align-items: flex-start;
+  transition: all 0.3s;
+  background: var(--white);
+}
+
+.service-item:hover {
+  border-color: var(--green);
+  box-shadow: 0 4px 24px rgba(27,107,58,0.1);
+}
+
+.service-ico { font-size: 32px; flex-shrink: 0; }
+
+.service-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--green); margin-bottom: 10px;
+}
+
+.service-item p {
+  font-size: 14px; color: var(--gray);
+  line-height: 1.75; font-weight: 300;
+}
+
+.service-item ul {
+  margin-top: 12px; list-style: none;
+}
+
+.service-item ul li {
+  font-size: 13px; color: var(--gray);
+  padding: 3px 0 3px 16px;
+  position: relative; font-weight: 300;
+}
+
+.service-item ul li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--gold);
+}
+
+/* ========== IMPACT ========== */
+.impact-numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.1);
+  margin-top: 60px;
+}
+
+.impact-block {
+  background: var(--green);
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.impact-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px; font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1; display: block;
+}
+
+.impact-desc {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  margin-top: 12px; line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+.impact-story {
+  max-width: 720px;
+  margin: 60px auto 0;
+  text-align: center;
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.85;
+}
+
+/* ========== ABOUT ========== */
+.about-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-intro-left p {
+  font-size: 16.5px; font-weight: 300;
+  line-height: 1.85; color: #4A4A3A;
+  margin-bottom: 22px;
+}
+
+.about-intro-left p strong { color: var(--black); font-weight: 600; }
+
+.about-vision-box {
+  background: var(--black);
+  color: var(--white);
+  padding: 48px 40px;
+  border-radius: 6px;
+  border-left: 4px solid var(--gold);
+}
+
+.about-vision-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+
+.about-vision-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-style: italic;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.about-vision-box .positioning {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-style: normal;
+  color: rgba(255,255,255,0.6);
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.about-closing {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-closing p {
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.85;
+}
+
+.about-closing .highlight {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+/* ========== STRATEGIC DIRECTION ========== */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.strategy-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 28px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.strategy-card:hover {
+  border-color: rgba(201,150,58,0.4);
+  background: rgba(27,107,58,0.1);
+}
+
+.strategy-card .s-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--gold);
+  letter-spacing: 2px; margin-bottom: 16px;
+}
+
+.strategy-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; color: var(--white);
+  margin-bottom: 10px; font-weight: 700;
+}
+
+.strategy-card p {
+  font-size: 13.5px; color: rgba(255,255,255,0.5);
+  line-height: 1.7; font-weight: 300;
+}
+
+/* ========== PARTNERS ========== */
+.partners-intro {
+  max-width: 640px;
+  font-size: 17px; font-weight: 300;
+  color: var(--gray); line-height: 1.8;
+  margin: 20px 0 56px;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.partner-card {
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 40px 36px;
+  border-left: 4px solid var(--green);
+  transition: all 0.3s;
+  background: var(--white);
+}
+
+.partner-card:hover {
+  border-left-color: var(--gold);
+  box-shadow: 0 6px 28px rgba(27,107,58,0.1);
+  transform: translateY(-3px);
+}
+
+.partner-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px; font-weight: 700;
+  color: var(--green); margin-bottom: 12px;
+}
+
+.partner-card p {
+  font-size: 14px; color: var(--gray);
+  line-height: 1.75; font-weight: 300;
+}
+
+.partner-tag {
+  display: inline-block;
+  margin-top: 16px;
+  background: var(--green-tint);
+  color: var(--green);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ========== CONTACT ========== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 56px;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--white); margin-bottom: 24px;
+}
+
+.contact-detail {
+  display: flex; gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.contact-ico { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+.contact-detail h4 {
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 4px;
+}
+
+.contact-detail p {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+.contact-reg {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-reg h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+
+.contact-reg p {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+
+.contact-form-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 40px;
+}
+
+.contact-form-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--white); margin-bottom: 28px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+  display: block;
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 12px 16px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 300;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+}
+
+.form-group select option { background: #222; }
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(201,150,58,0.2);
+  padding: 60px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.footer-brand-col {}
+
+.footer-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--white);
+}
+
+.footer-logo-text span { color: var(--gold); }
+
+.footer-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-light);
+  margin: 6px 0 16px;
+  display: block;
+}
+
+.footer-brand-col p {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.75;
+}
+
+.footer-col h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.footer-col ul li a:hover { color: var(--gold); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+
+.footer-copy {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+}
+
+.footer-reg {
+  font-size: 11px; color: rgba(255,255,255,0.25);
+  font-family: 'DM Mono', monospace;
+  text-align: right; line-height: 1.6;
+}
+
+/* ========== PAGE HERO SHARED ========== */
+.page-hero {
+  background: var(--black);
+  padding: 80px 60px 70px;
+  position: relative; overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 90% 50%, rgba(27,107,58,0.2) 0%, transparent 70%);
+}
+
+.page-hero-content { position: relative; z-index: 2; }
+
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -1.5px;
+  margin-top: 16px;
+  max-width: 760px;
+}
+
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+
+.page-hero p {
+  max-width: 560px;
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+/* ========== NITA BADGE ========== */
+.nita-badge {
+  display: inline-flex;
+  align-items: center; gap: 10px;
+  background: rgba(27,107,58,0.2);
+  border: 1px solid rgba(27,107,58,0.4);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-light);
+  margin-top: 28px;
+}
+
+.nita-badge span { color: var(--gold); }
+
+/* ========== SUSTAINABILITY ========== */
+.sustain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.sustain-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px 28px;
+  border-bottom: 3px solid var(--green);
+  transition: all 0.3s;
+}
+
+.sustain-card:hover {
+  border-bottom-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.sustain-card .s-ico { font-size: 28px; margin-bottom: 16px; display: block; }
+
+.sustain-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--green); margin-bottom: 10px;
+}
+
+.sustain-card p {
+  font-size: 13.5px; color: var(--gray);
+  line-height: 1.7; font-weight: 300;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ========== MOBILE ========== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px; left: 0; right: 0;
+  background: rgba(17,20,16,0.98);
+  border-bottom: 1px solid rgba(201,150,58,0.2);
+  padding: 20px 28px;
+  z-index: 999;
+  flex-direction: column; gap: 4px;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-size: 15px; font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  padding: 12px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section-wrap { padding: 70px 28px; }
+  .hero { padding: 60px 28px; }
+  .page-hero { padding: 60px 28px 50px; }
+  .home-intro { grid-template-columns: 1fr; gap: 40px; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+  .schools-grid { grid-template-columns: 1fr; }
+  .services-list { grid-template-columns: 1fr; }
+  .impact-numbers { grid-template-columns: 1fr; }
+  .about-intro { grid-template-columns: 1fr; gap: 40px; }
+  .strategy-grid { grid-template-columns: 1fr; }
+  .partners-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .sustain-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 28px; }
+  .hero-stat { border-right: none; padding-right: 0; margin-right: 0; }
+  footer { padding: 40px 28px; }
+}
+
+@media (max-width: 560px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-reg { text-align: left; }
+  nav { padding: 0 20px; }
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Nakuru, Kenya · Est. Creative Economy</div>
-  <h1>Where Talent<br>Becomes <em>Income.</em></h1>
-  <p class="hero-sub">
-    Pheel Creations Hub is Nakuru's creative engine — a living, breathing ecosystem where youth and women stop waiting for opportunity and start building it.
-  </p>
-  <div class="hero-meta">
-    <div class="hero-stat">
-      <span class="hero-stat-num">500+</span>
-      <span class="hero-stat-label">Lives Touched</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">26</span>
-      <span class="hero-stat-label">Certified Courses</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">70%</span>
-      <span class="hero-stat-label">Graduate Employment Rate</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">6</span>
-      <span class="hero-stat-label">Creative Schools</span>
+<!-- NAV -->
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-logo-mark">P</div>
+    <div class="nav-brand-text">
+      Pheel Creations Hub
+      <span class="nav-brand-sub">Home for Creativity, Empowerment & Innovation</span>
     </div>
   </div>
-  <div class="hero-badge">
-    <span class="hero-badge-text">NITA<br>Registered<br>✦<br>Nakuru</span>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About Us</a></li>
+    <li><a onclick="showPage('whatwedo')" id="nav-whatwedo">What We Do</a></li>
+    <li><a onclick="showPage('schools')" id="nav-schools">Our Schools</a></li>
+    <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a onclick="showPage('impact')" id="nav-impact">Impact</a></li>
+    <li><a onclick="showPage('partners')" id="nav-partners">Partners</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact" class="nav-cta">Get In Touch</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
   </div>
-</section>
+</nav>
 
-<!-- MARQUEE STRIP -->
-<div class="strip">
-  <div class="strip-inner">
-    <span class="strip-item">Skills That Pay <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Creative Economy <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Women in Business <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Youth Empowerment <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Nakuru Rising <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Built Without Grants <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Skills That Pay <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Creative Economy <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Women in Business <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Youth Empowerment <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Nakuru Rising <span class="strip-dot">✦</span></span>
-    <span class="strip-item">Built Without Grants <span class="strip-dot">✦</span></span>
-  </div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');toggleMenu()">Home</a>
+  <a onclick="showPage('about');toggleMenu()">About Us</a>
+  <a onclick="showPage('whatwedo');toggleMenu()">What We Do</a>
+  <a onclick="showPage('schools');toggleMenu()">Our Schools</a>
+  <a onclick="showPage('services');toggleMenu()">Services</a>
+  <a onclick="showPage('impact');toggleMenu()">Impact</a>
+  <a onclick="showPage('partners');toggleMenu()">Partners</a>
+  <a onclick="showPage('contact');toggleMenu()">Get In Touch</a>
 </div>
 
-<!-- ABOUT -->
-<section class="about">
-  <div class="about-left">
-    <div class="section-label">Who We Are</div>
-    <h2>Not a charity.<br>An ecosystem.</h2>
-    <blockquote class="about-pull">
-      "We didn't build Pheel to give people fish. We built it so they could own the whole fishing industry."
-    </blockquote>
-  </div>
-  <div class="about-right">
-    <p>
-      Nakuru has no shortage of talent. What it has a shortage of is <strong>structure</strong> — the kind that turns raw skill into real income, scattered hustle into sustainable business, and isolated creatives into a powerful community.
-    </p>
-    <p>
-      Pheel Creations Hub was built to be that structure. We're not a training centre that hands out certificates and wishes you luck. We're a full creative and business ecosystem — under one roof, in the heart of Nakuru — combining skills development, business incubation, professional workspace, photography and media services, event production, and community networking.
-    </p>
-    <p>
-      We run on revenue, not goodwill. That's by design. Because when your model is sustainable, your impact is permanent.
-    </p>
-  </div>
-</section>
+<!-- ======================== HOME PAGE ======================== -->
+<div class="page active" id="page-home">
 
-<!-- PILLARS -->
-<section class="pillars">
-  <div class="pillars-header">
-    <div>
-      <div class="section-label">How We Work</div>
-      <h2>Four pillars.<br>One ecosystem.</h2>
-    </div>
-    <p class="pillars-intro">
-      Every service we run feeds into the other. That's not accidental — it's what makes us different from anyone else doing this in Nakuru.
-    </p>
-  </div>
-  <div class="pillars-grid">
-    <div class="pillar">
-      <div class="pillar-num">01</div>
-      <span class="pillar-icon">🎓</span>
-      <h3>Skills Development</h3>
-      <p>Practical, NITA-certified training across six creative schools. No fluff — just skills the market is willing to pay for.</p>
-      <ul class="pillar-list">
-        <li>Creative Arts & Design</li>
-        <li>Media & Digital Content</li>
-        <li>Fashion, Beauty & Lifestyle</li>
-        <li>Culinary & Hospitality Arts</li>
-        <li>Business & Personal Development</li>
-        <li>Design & Environment</li>
-      </ul>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02</div>
-      <span class="pillar-icon">🚀</span>
-      <h3>Business Incubation</h3>
-      <p>We don't stop at graduation. We walk alongside you into the market — branding, positioning, pricing, clients, and funding access.</p>
-      <ul class="pillar-list">
-        <li>Brand identity & positioning</li>
-        <li>Content & digital marketing</li>
-        <li>Business structuring</li>
-        <li>Commercialisation strategy</li>
-        <li>Funding opportunity access</li>
-      </ul>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03</div>
-      <span class="pillar-icon">🤝</span>
-      <h3>Community & Ecosystem</h3>
-      <p>A hub is only as strong as its network. We've built one of Nakuru's most active creative communities — 200K+ strong on Facebook alone.</p>
-      <ul class="pillar-list">
-        <li>Peer learning & collaboration</li>
-        <li>Entrepreneur showcases</li>
-        <li>Partner & investor introductions</li>
-        <li>Forums & knowledge exchange</li>
-      </ul>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">04</div>
-      <span class="pillar-icon">💼</span>
-      <h3>Space & Services</h3>
-      <p>Professional infrastructure that pays for itself — studio, co-working, events, and creative services available to the public and organisations.</p>
-      <ul class="pillar-list">
-        <li>Photography & videography studio</li>
-        <li>Co-working space rental</li>
-        <li>Event planning & production</li>
-        <li>Training facility hire</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- DIFFERENCE -->
-<section class="difference">
-  <div class="section-label">What Sets Us Apart</div>
-  <h2>The Pheel difference.</h2>
-  <div class="difference-grid">
-    <div class="diff-card">
-      <h3>We're self-sustaining by design</h3>
-      <p>No grants, no donor dependency, no begging. Pheel was built as a business first — one that creates social impact as a direct outcome of its commercial success. When we grow revenue, we grow reach.</p>
-    </div>
-    <div class="diff-card">
-      <h3>One roof, full ecosystem</h3>
-      <p>Our competitors offer one service and send you away for the rest. We give you skills, incubation, workspace, professional services, events, and community all in one place. That integration is our product.</p>
-    </div>
-    <div class="diff-card">
-      <h3>We walk the talk on women</h3>
-      <p>Women's empowerment isn't our tagline — it's our daily reality. The majority of our participants are women, and we've built our programs, schedules, and pricing to actually accommodate their lives.</p>
-    </div>
-    <div class="diff-card">
-      <h3>Nakuru is the point</h3>
-      <p>Most creative economy energy stays in Nairobi. Pheel was built specifically to develop Nakuru's creative economy — not as a branch of something bigger, but as the thing itself. Nakuru doesn't need a Nairobi branch. It needs its own engine.</p>
-    </div>
-    <div class="diff-card">
-      <h3>Certified, credible, connected</h3>
-      <p>NITA registration, ILO partnership, Nakuru County relationships, ASSEK membership — we've built institutional credibility deliberately so that doors open for our community, not just for us.</p>
-    </div>
-    <div class="diff-card">
-      <h3>Impact you can measure</h3>
-      <p>70% of our graduates are employed or running businesses within months of completing training. That's not a hope — it's a metric we track and we're not satisfied until it improves.</p>
-    </div>
-  </div>
-</section>
-
-<!-- IMPACT -->
-<section class="impact">
-  <div class="section-label">Real Numbers</div>
-  <h2>Impact that compounds.</h2>
-  <div class="impact-grid">
-    <div class="impact-stat">
-      <span class="impact-num">500+</span>
-      <div class="impact-label">Individuals trained, engaged,<br>and connected through the hub</div>
-    </div>
-    <div class="impact-stat">
-      <span class="impact-num">70%</span>
-      <div class="impact-label">Graduate employment or<br>entrepreneurship rate</div>
-    </div>
-    <div class="impact-stat">
-      <span class="impact-num">200K+</span>
-      <div class="impact-label">Community members across<br>Nakuru City Moms and Dads</div>
-    </div>
-  </div>
-  <p class="impact-desc">
-    These numbers don't come from a pitch deck. They come from women who now run salons. From young men who now shoot weddings. From entrepreneurs who walked in with raw talent and walked out with a business. That's what Pheel is built to do — and we're just getting started.
-  </p>
-</section>
-
-<!-- REVENUE MODEL -->
-<section class="revenue">
-  <div class="section-label">Sustainability Model</div>
-  <h2>How Pheel<br>funds itself.</h2>
-  <p class="revenue-intro">
-    A hub that depends on donors is fragile. We built Pheel to generate revenue from multiple streams so our work doesn't stop when a grant cycle ends. Every service we offer creates value — and that value keeps the lights on and the doors open.
-  </p>
-  <div class="revenue-streams">
-    <div class="stream">
-      <span class="stream-icon">📸</span>
-      <div>
-        <h3>Photography & Videography Services</h3>
-        <p>Professional studio and location shoots — commercial, corporate, events, and content creation for individuals and businesses in Nakuru.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Home for Creativity, Empowerment & Innovation</div>
+      <h1>Where <em>Talent</em><br>Becomes <span class="green-word">Income.</span></h1>
+      <div class="hero-tagline">Nakuru's Creative & Innovation Ecosystem</div>
+      <p class="hero-desc">
+        Pheel Creations Hub is a creative and innovation hub that bridges the gap between talent and income — equipping individuals with skills, supporting business growth, and connecting them to real opportunities across Kenya.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('whatwedo')">Explore What We Do</button>
+        <button class="btn-outline" onclick="showPage('schools')">Our 6 Schools →</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Individuals Reached</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-num">26</span>
+          <span class="stat-label">Certified Courses</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-num">70%</span>
+          <span class="stat-label">Graduate Employment Rate</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Creative Schools</span>
+        </div>
       </div>
     </div>
-    <div class="stream">
-      <span class="stream-icon">🏛️</span>
-      <div>
-        <h3>Space & Equipment Rental</h3>
-        <p>Co-working desks, event space, training rooms, and studio equipment hire — accessible to creatives, organisations, and corporates.</p>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item">Skills That Pay <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Creative Economy <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Women in Business <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Youth Empowerment <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">NITA Certified <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Built Without Grants <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Kenya's Creative Future <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Skills That Pay <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Creative Economy <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Women in Business <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Youth Empowerment <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">NITA Certified <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Built Without Grants <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Kenya's Creative Future <span class="marquee-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="section-wrap off">
+    <div class="home-intro">
+      <div class="home-intro-left">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Not a training centre.<br>An ecosystem.</h2>
+        <blockquote class="pull-quote">
+          "We didn't build Pheel to give people fish. We built it so they could own the whole fishing industry."
+        </blockquote>
+      </div>
+      <div class="home-intro-right">
+        <p>
+          Kenya has no shortage of talent. What it has a shortage of is <strong>structure</strong> — the kind that turns raw skill into real income, scattered hustle into sustainable business, and isolated creatives into a powerful community.
+        </p>
+        <p>
+          Pheel Creations Hub was built to be that structure. We operate as a <strong>hybrid platform</strong> that combines training, incubation, and ecosystem development to support emerging creatives and entrepreneurs in building sustainable livelihoods — with impact that reaches across Kenya.
+        </p>
+        <p>
+          We run on revenue, not goodwill. That's by design. Because when your model is sustainable, your impact is permanent.
+        </p>
+        <button class="btn-primary" style="margin-top:8px;" onclick="showPage('about')">Read Our Full Story</button>
       </div>
     </div>
-    <div class="stream">
-      <span class="stream-icon">🎓</span>
+  </section>
+
+  <!-- Pillars -->
+  <section class="section-wrap dark">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">Four pillars.<br>One ecosystem.</h2>
+    <div class="pillars-grid">
+      <div class="pillar-card" onclick="showPage('whatwedo')">
+        <div class="pillar-num">01</div>
+        <span class="pillar-icon">🚀</span>
+        <h3>Business Support & Incubation</h3>
+        <p>We walk alongside creatives from skills to sustainable businesses — branding, digital marketing, business development, pricing, and funding access.</p>
+      </div>
+      <div class="pillar-card" onclick="showPage('whatwedo')">
+        <div class="pillar-num">02</div>
+        <span class="pillar-icon">🤝</span>
+        <h3>Community & Ecosystem</h3>
+        <p>A collaborative environment where creatives, entrepreneurs, and professionals connect, learn, and grow — with a 200K+ member community network.</p>
+      </div>
+      <div class="pillar-card" onclick="showPage('whatwedo')">
+        <div class="pillar-num">03</div>
+        <span class="pillar-icon">🏛️</span>
+        <h3>Access to Opportunities</h3>
+        <p>Client work, commercial opportunities, partnerships, funded programs, and exposure to industry networks and investors — real doors that open.</p>
+      </div>
+      <div class="pillar-card" onclick="showPage('whatwedo')">
+        <div class="pillar-num">04</div>
+        <span class="pillar-icon">🎓</span>
+        <h3>Skills Development</h3>
+        <p>Practical, NITA-certified training in creative and entrepreneurial fields — hands-on, market-relevant, and aligned with real economic opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schools preview -->
+  <section class="section-wrap">
+    <div class="section-label">Our Training</div>
+    <h2 class="section-title">Six schools.<br>26 certified courses.</h2>
+    <div class="schools-grid">
+      <div class="school-card">
+        <span class="school-emoji">🎨</span>
+        <h3>Creative Arts & Design</h3>
+        <p>From visual design to digital illustration — building the next generation of Kenya's creative professionals.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+      <div class="school-card">
+        <span class="school-emoji">📸</span>
+        <h3>Media & Digital Content</h3>
+        <p>Photography, videography, content creation, and digital media production for the modern economy.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+      <div class="school-card">
+        <span class="school-emoji">✂️</span>
+        <h3>Fashion, Beauty & Lifestyle</h3>
+        <p>Fashion design, beauty therapy, and lifestyle entrepreneurship — skills with immediate earning potential.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+      <div class="school-card">
+        <span class="school-emoji">🍽️</span>
+        <h3>Culinary & Hospitality Arts</h3>
+        <p>Professional culinary training and hospitality skills for Kenya's growing food and service industry.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+      <div class="school-card">
+        <span class="school-emoji">🏗️</span>
+        <h3>Design & Environment</h3>
+        <p>Interior design, space planning, and environmental design — creating built environments that inspire.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+      <div class="school-card">
+        <span class="school-emoji">💼</span>
+        <h3>Business & Personal Development</h3>
+        <p>Entrepreneurship, financial literacy, communication, and personal growth — the backbone of every sustainable business.</p>
+        <div class="school-courses">NITA Certified Courses</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <button class="btn-primary" onclick="showPage('schools')">View All Schools & Courses</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======================== ABOUT PAGE ======================== -->
+<div class="page" id="page-about">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">About Us</div>
+      <h1>The story behind<br><em>Pheel.</em></h1>
+      <p>A creative and innovation hub built not on donations, but on the belief that talent — properly equipped and supported — is its own economy.</p>
+      <div class="nita-badge">✓ NITA Registered &nbsp;<span>|</span>&nbsp; Nakuru, Kenya</div>
+    </div>
+  </div>
+
+  <section class="section-wrap off">
+    <div class="about-intro">
+      <div class="about-intro-left">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Built to bridge the gap between talent and income.</h2>
+        <br>
+        <p>Pheel Creations Hub is a creative and innovation hub focused on empowering youth — with a strong emphasis on women — through skills development, business support, and access to economic opportunities.</p>
+        <p>The hub operates as a hybrid platform that combines training, incubation, and ecosystem development to support emerging creatives and entrepreneurs in building sustainable livelihoods.</p>
+        <p>Pheel Creations Hub is designed to bridge the gap between talent and income by equipping individuals with skills, supporting business growth, and connecting them to real opportunities — including markets, partnerships, and funding.</p>
+        <p>A significant portion of our participants are women, reflecting the hub's strong commitment to women's economic empowerment. This isn't a tagline. It's our daily reality, built into our programs, our schedules, and our pricing.</p>
+      </div>
       <div>
+        <div class="about-vision-box">
+          <h3>Our Vision</h3>
+          <p>"To build a leading creative and innovation hub that equips, incubates, and connects creatives and entrepreneurs — especially women — to sustainable income and growth opportunities."</p>
+          <div class="positioning">
+            <strong style="color:var(--gold-light);">Positioning Statement</strong><br><br>
+            Pheel Creations Hub is a creative and innovation ecosystem that equips individuals with skills, supports business growth, and connects them to opportunities — with a strong focus on women and youth.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategic Direction -->
+  <section class="section-wrap dark">
+    <div class="section-label">Strategic Direction</div>
+    <h2 class="section-title">Where we're going.</h2>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="s-num">01</div>
+        <h3>Expanding Certified Pathways</h3>
+        <p>Expanding structured training and certification pathways across all six schools — deepening quality and reach in every creative discipline.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="s-num">02</div>
+        <h3>Strengthening Incubation</h3>
+        <p>Building more robust business support systems so that graduates don't just learn — they launch, grow, and sustain.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="s-num">03</div>
+        <h3>Access to Funding & Investment</h3>
+        <p>Increasing access to funding and investment opportunities for our community through strategic partnerships and funding readiness programs.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="s-num">04</div>
+        <h3>Sustainable Revenue Models</h3>
+        <p>Building revenue streams that go beyond time-for-money — digital products, systematic business transformation programs, and leveraged service delivery.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="s-num">05</div>
+        <h3>Scaling the Hub Model</h3>
+        <p>The hub model works. We're designed to scale it — reaching more communities, more entrepreneurs, and more of Kenya's creative talent.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="s-num">06</div>
+        <h3>Dual Impact & Enterprise</h3>
+        <p>Operating across both social impact and enterprise models — enabling access to donor funding alongside commercial revenue streams for long-term sustainability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability -->
+  <section class="section-wrap off">
+    <div class="section-label">How We Sustain Ourselves</div>
+    <h2 class="section-title">Self-funded.<br>By design.</h2>
+    <p style="max-width:600px;font-size:17px;font-weight:300;color:var(--gray);line-height:1.8;margin:20px 0 0;">
+      A hub that depends on donors is fragile. Our blended sustainability model ensures both impact delivery and financial independence through five interlocking revenue streams.
+    </p>
+    <div class="sustain-grid">
+      <div class="sustain-card">
+        <span class="s-ico">🎓</span>
         <h3>Training Programs</h3>
-        <p>NITA-certified courses across six schools, delivered to individuals and organisations. Both short courses and structured certification pathways.</p>
+        <p>NITA-certified courses delivered to individuals and organisations — both short courses and structured certification pathways across all six schools.</p>
+      </div>
+      <div class="sustain-card">
+        <span class="s-ico">🏛️</span>
+        <h3>Co-Working & Space Utilisation</h3>
+        <p>Professional co-working space, training rooms, and studio facility hire for creatives, corporates, and community organisations.</p>
+      </div>
+      <div class="sustain-card">
+        <span class="s-ico">📸</span>
+        <h3>Creative & Business Services</h3>
+        <p>Photography, videography, content production, and event planning services available commercially to businesses and individuals.</p>
+      </div>
+      <div class="sustain-card">
+        <span class="s-ico">🤝</span>
+        <h3>Partnerships & Funded Programs</h3>
+        <p>Collaborations with development partners, county government, and institutions to deliver funded training and community programs.</p>
+      </div>
+      <div class="sustain-card">
+        <span class="s-ico">🎉</span>
+        <h3>Event Hosting & Collaborations</h3>
+        <p>Hosting events, forums, showcases, and the Nakuru Entrepreneur Awards — creating revenue while building community.</p>
+      </div>
+      <div class="sustain-card">
+        <span class="s-ico">📦</span>
+        <h3>Digital Products & Systems</h3>
+        <p>Scaling toward digital learning products and systematic business transformation programs — leveraged income beyond time-for-money.</p>
       </div>
     </div>
-    <div class="stream">
-      <span class="stream-icon">🎉</span>
-      <div>
-        <h3>Event Planning & Production</h3>
-        <p>End-to-end event management for businesses, institutions, and community organisations — including the Nakuru Entrepreneur Awards, now in its 4th edition.</p>
+  </section>
+
+  <!-- Closing note -->
+  <section class="section-wrap dark">
+    <div style="max-width:740px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">Closing Note</div>
+      <h2 class="section-title" style="text-align:center;">A growing platform with a clear pathway for scale.</h2>
+      <div class="about-closing" style="margin-top:32px;">
+        <p>Pheel Creations Hub represents a <span class="highlight">growing platform with strong community roots, active engagement, and a clear pathway for scale.</span></p>
+        <br>
+        <p>With the right support and strategic partnerships, the hub has the potential to expand its reach, deepen its impact, and <span class="highlight">contribute significantly to creative economy development and youth employment</span> — not just in one city, but across Kenya.</p>
+        <br>
+        <p>We're not waiting for conditions to be perfect. We're operating, growing, and building — right now, with the community we have.</p>
       </div>
+      <br><br>
+      <button class="btn-primary" onclick="showPage('contact')">Partner With Us</button>
     </div>
-    <div class="stream">
-      <span class="stream-icon">🤝</span>
-      <div>
-        <h3>Strategic Partnerships</h3>
-        <p>Collaborations with development partners, county government, and institutions like ILO and FACT to deliver funded training and community programs.</p>
-      </div>
-    </div>
-    <div class="stream">
-      <span class="stream-icon">📦</span>
-      <div>
-        <h3>Digital Products & Programs</h3>
-        <p>Scaling beyond time-for-money through digital learning products, business transformation programs, and systematised service delivery models.</p>
-      </div>
+  </section>
+
+</div>
+
+<!-- ======================== WHAT WE DO PAGE ======================== -->
+<div class="page" id="page-whatwedo">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">What We Do</div>
+      <h1>An integrated model<br>built around <em>four core pillars.</em></h1>
+      <p>Every service feeds into the next. That's not accidental — it's what makes us more than a training centre.</p>
     </div>
   </div>
-</section>
 
-<!-- VISION -->
-<section class="vision">
-  <h2>We're building <em>Nakuru's</em> creative future. Come be part of it.</h2>
-  <p>
-    Pheel Creations Hub isn't waiting for conditions to be perfect. We're operating, growing, and building — right now, in Nakuru, with the community we have. If you're a partner, investor, organisation, or someone with raw talent and a real dream, there's a place for you here.
-  </p>
-</section>
+  <!-- Pillar 1 -->
+  <section class="section-wrap off">
+    <div class="section-label">Pillar 01</div>
+    <h2 class="section-title">Skills Development</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;align-items:start;">
+      <div>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;margin-bottom:20px;">
+          We provide practical, hands-on training in creative and entrepreneurial fields, equipping individuals with market-relevant and income-generating skills.
+        </p>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;">
+          Our training includes both structured programs and continuous learning engagements, designed to be accessible, practical, and aligned with real economic opportunities. Every program is NITA-certified, giving graduates nationally recognised credentials.
+        </p>
+      </div>
+      <div style="background:var(--green);color:var(--white);padding:40px;border-radius:6px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);margin-bottom:20px;">What this includes:</h3>
+        <ul style="list-style:none;">
+          <li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;font-weight:300;color:rgba(255,255,255,0.8);">✓ Structured certification programs across 6 schools</li>
+          <li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;font-weight:300;color:rgba(255,255,255,0.8);">✓ 26 NITA-certified courses</li>
+          <li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;font-weight:300;color:rgba(255,255,255,0.8);">✓ Hands-on, practical learning approach</li>
+          <li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;font-weight:300;color:rgba(255,255,255,0.8);">✓ Continuous learning engagements</li>
+          <li style="padding:10px 0;font-size:14px;font-weight:300;color:rgba(255,255,255,0.8);">✓ Accessible programs designed for working adults</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 2 -->
+  <section class="section-wrap dark">
+    <div class="section-label">Pillar 02</div>
+    <h2 class="section-title">Business Support & Incubation</h2>
+    <p style="max-width:600px;font-size:17px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.8;margin:20px 0 48px;">
+      We support creatives and entrepreneurs to transition from skills to sustainable businesses. Through this, the hub functions as an incubation space for early-stage and growing enterprises.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">🎯</span>
+        <h3>Branding & Market Positioning</h3>
+        <p>Building your brand identity, defining your positioning, and helping you stand out in your market.</p>
+      </div>
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">📱</span>
+        <h3>Content Creation & Digital Marketing</h3>
+        <p>Creating content that converts and building digital presence that drives real business outcomes.</p>
+      </div>
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">📋</span>
+        <h3>Business Development & Structuring</h3>
+        <p>Structuring your business properly — legal foundations, operations, and systems for growth.</p>
+      </div>
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">💰</span>
+        <h3>Pricing & Commercialisation</h3>
+        <p>Helping you price your work correctly and build commercialisation strategies that generate sustainable income.</p>
+      </div>
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">🏦</span>
+        <h3>Access to Funding Opportunities</h3>
+        <p>Connecting entrepreneurs with grants, investors, and funding programs — and preparing them to be fundable.</p>
+      </div>
+      <div class="strategy-card">
+        <span style="font-size:28px;display:block;margin-bottom:12px;">🌱</span>
+        <h3>Business Revival Programs</h3>
+        <p>Comprehensive programs for struggling businesses — turning around enterprises that have the talent but need the systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 3 -->
+  <section class="section-wrap off">
+    <div class="section-label">Pillar 03</div>
+    <h2 class="section-title">Community & Ecosystem Development</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;align-items:start;">
+      <div>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;margin-bottom:20px;">
+          Pheel Creations Hub provides a collaborative environment where creatives, entrepreneurs, and professionals can connect, learn, and grow together.
+        </p>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;margin-bottom:20px;">
+          The hub hosts continuous engagements that foster collaboration, knowledge exchange, and peer learning — creating a strong, active ecosystem that goes far beyond Nakuru.
+        </p>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;">
+          Our <strong>Nakuru City Moms and Dads</strong> Facebook community has grown to over <strong>200,000 members</strong> — officially recognised by Meta — and represents one of the most engaged community platforms in the region.
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:var(--green-tint);border-left:4px solid var(--green);padding:24px 28px;border-radius:4px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Community Reach</div>
+          <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--green);">200K+</div>
+          <div style="font-size:13px;color:var(--gray);font-weight:300;">Nakuru City Moms & Dads — Meta Recognised</div>
+        </div>
+        <div style="background:var(--green-tint);border-left:4px solid var(--gold);padding:24px 28px;border-radius:4px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Annual Flagship Event</div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--black);">Nakuru Entrepreneur Awards</div>
+          <div style="font-size:13px;color:var(--gray);font-weight:300;">4th Edition — Celebrating Kenya's creative entrepreneurs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 4 -->
+  <section class="section-wrap dark">
+    <div class="section-label">Pillar 04</div>
+    <h2 class="section-title">Access to Opportunities & Markets</h2>
+    <p style="max-width:600px;font-size:17px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.8;margin:20px 0 48px;">
+      A core component of the hub is connecting individuals to real opportunities — not theoretical ones. This includes client work, commercial opportunities, partnerships, collaborations, sponsored and funded training programs, and exposure to networks and industry players.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="strategy-card">
+        <h3>Client Work & Commercial Opportunities</h3>
+        <p>Direct connections to clients and paid work opportunities for graduates and hub members ready to earn.</p>
+      </div>
+      <div class="strategy-card">
+        <h3>Partnerships & Collaborations</h3>
+        <p>Strategic introductions to organisations, institutions, and businesses looking for creative talent and services.</p>
+      </div>
+      <div class="strategy-card">
+        <h3>Sponsored & Funded Programs</h3>
+        <p>Access to training programs funded by partners — removing the financial barrier for participants who need it most.</p>
+      </div>
+      <div class="strategy-card">
+        <h3>Showcases & Investor Exposure</h3>
+        <p>We create platforms for entrepreneurs to showcase their work and engage with potential partners and investors at real events.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure -->
+  <section class="section-wrap off">
+    <div class="section-label">Infrastructure & Space</div>
+    <h2 class="section-title">Multi-functional.<br>Professional. Accessible.</h2>
+    <p style="max-width:600px;font-size:17px;font-weight:300;color:var(--gray);line-height:1.8;margin:20px 0 48px;">
+      Pheel Creations Hub operates from a flexible and multi-functional physical space designed to support training, collaboration, and enterprise development. It's not just a room — it's an environment engineered for creative output.
+    </p>
+    <div class="services-list">
+      <div class="service-item">
+        <span class="service-ico">🎓</span>
+        <div>
+          <h3>Training & Workshops</h3>
+          <p>Fully equipped training rooms for structured programs, workshops, and capacity building sessions.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">💡</span>
+        <div>
+          <h3>Business Incubation & Mentorship</h3>
+          <p>Dedicated space for incubation sessions, mentorship meetings, and business development consultations.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">💻</span>
+        <div>
+          <h3>Co-Working Space</h3>
+          <p>Professional co-working environment for creatives and entrepreneurs who need a structured, inspiring place to work and network.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">📸</span>
+        <div>
+          <h3>Creative Production Studio</h3>
+          <p>Photography and videography studio for commercial shoots, content creation, and professional creative production.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">🎉</span>
+        <div>
+          <h3>Event Space</h3>
+          <p>Versatile event hosting space for showcases, forums, community engagements, and corporate events.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">🏢</span>
+        <div>
+          <h3>Facility for Organisations</h3>
+          <p>Organisations, corporates, and development partners can use the space to run their own training programs and community engagements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======================== SCHOOLS PAGE ======================== -->
+<div class="page" id="page-schools">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Our Schools</div>
+      <h1>Six schools.<br><em>26 certified courses.</em></h1>
+      <p>Every course is NITA-registered, hands-on, and designed to produce graduates who can earn from day one.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap off">
+    <div class="section-label">The Six Schools</div>
+    <h2 class="section-title">Your craft.<br>Your certification.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;">
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--green);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">🎨</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);">School of Creative Arts & Design</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Building Kenya's next generation of visual artists, graphic designers, and creative professionals with skills that go beyond aesthetics into commercial application.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;">
+              <span style="position:absolute;left:0;color:var(--green);">→</span> Graphic Design & Visual Communication
+            </li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;">
+              <span style="position:absolute;left:0;color:var(--green);">→</span> Digital Illustration & Art Direction
+            </li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;">
+              <span style="position:absolute;left:0;color:var(--green);">→</span> Brand Identity Design
+            </li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;">
+              <span style="position:absolute;left:0;color:var(--green);">→</span> Print & Digital Design Production
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--green);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">📸</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);">School of Media & Digital Content</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Photography, videography, and digital content creation skills for Kenya's booming media, marketing, and content economy.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Professional Photography</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Videography & Film Production</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Social Media Content Creation</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Digital Marketing & Editing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--black);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">✂️</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);">School of Fashion, Beauty & Lifestyle</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Fashion design, beauty therapy, and lifestyle entrepreneurship — skills with immediate earning potential and a growing market across Kenya.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Fashion Design & Garment Construction</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Beauty Therapy & Cosmetology</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Makeup Artistry</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Lifestyle Business Management</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--black);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">🍽️</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);">School of Culinary & Hospitality Arts</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Professional culinary and hospitality training for Kenya's growing food service, catering, and hospitality industry.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Professional Cooking & Food Production</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Pastry & Baking Arts</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Hospitality & Customer Service</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Food Business Management</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--gold);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">🏗️</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--black);">School of Design & Environment</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Interior design, space planning, and environmental design — building the skills to create spaces that inspire and function beautifully.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Interior Design & Space Planning</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Landscape & Outdoor Design</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Environmental Aesthetics</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Design Entrepreneurship</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--light-gray);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--gold);padding:28px 32px;">
+          <span style="font-size:36px;display:block;margin-bottom:10px;">💼</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--black);">School of Business & Personal Development</h3>
+        </div>
+        <div style="padding:32px;">
+          <p style="font-size:15px;font-weight:300;color:var(--gray);line-height:1.75;margin-bottom:20px;">Entrepreneurship, financial literacy, communication, and personal growth — the foundational skills every creative needs to run a sustainable business.</p>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Areas Covered</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Entrepreneurship & Business Management</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Financial Literacy & Money Management</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Communication & Leadership</li>
+            <li style="font-size:13.5px;color:var(--gray);padding-left:16px;position:relative;font-weight:300;"><span style="position:absolute;left:0;color:var(--green);">→</span> Personal Branding & Growth</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--green-tint);border:1px solid var(--green);border-radius:6px;padding:40px;margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Registration Information</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--green);">All courses are NITA-certified</h3>
+        <p style="font-size:14px;color:var(--gray);font-weight:300;margin-top:6px;">NITA Registered · Nakuru, Kenya</p>
+      </div>
+      <button class="btn-primary" onclick="showPage('contact')">Enrol Now</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======================== SERVICES PAGE ======================== -->
+<div class="page" id="page-services">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Our Services</div>
+      <h1>Professional services.<br><em>Real results.</em></h1>
+      <p>Beyond training, Pheel Creations Hub delivers professional creative, media, and space services to businesses and organisations across Kenya.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap off">
+    <div class="section-label">Creative Services</div>
+    <h2 class="section-title">What we offer.</h2>
+    <div class="services-list" style="margin-top:56px;">
+      <div class="service-item">
+        <span class="service-ico">📸</span>
+        <div>
+          <h3>Photography & Videography</h3>
+          <p>Professional studio and location shoots for businesses, events, brands, and individuals. Commercial-quality production available for content creators and organisations.</p>
+          <ul>
+            <li>Commercial & brand photography</li>
+            <li>Event photography & videography</li>
+            <li>Corporate headshots & team shoots</li>
+            <li>Content creation packages</li>
+            <li>Product photography</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">🏛️</span>
+        <div>
+          <h3>Co-Working Space</h3>
+          <p>A structured and supportive working environment for creatives and entrepreneurs who need professional workspace, community, and collaboration opportunities.</p>
+          <ul>
+            <li>Flexible hot-desking</li>
+            <li>Dedicated workspace options</li>
+            <li>High-speed connectivity</li>
+            <li>Access to creative community</li>
+            <li>Networking & collaboration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">🎉</span>
+        <div>
+          <h3>Event Planning & Production</h3>
+          <p>End-to-end event management for businesses, institutions, and community organisations. Our flagship event — the Nakuru Entrepreneur Awards — is now in its 4th edition.</p>
+          <ul>
+            <li>Corporate events & product launches</li>
+            <li>Community forums & showcases</li>
+            <li>Award ceremonies</li>
+            <li>Training & conference events</li>
+            <li>Creative showcases & exhibitions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">🏢</span>
+        <div>
+          <h3>Training Facility Hire</h3>
+          <p>Organisations, corporates, and institutions can collaborate with the hub to deliver their own training programs, capacity building initiatives, and community engagements within our space.</p>
+          <ul>
+            <li>Fully equipped training rooms</li>
+            <li>AV equipment included</li>
+            <li>Flexible room configurations</li>
+            <li>Catering coordination available</li>
+            <li>Custom engagement packages</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">⚙️</span>
+        <div>
+          <h3>Equipment Rental</h3>
+          <p>Professional photography, videography, and creative equipment available for hire to hub members, students, and external clients.</p>
+          <ul>
+            <li>Camera & lighting equipment</li>
+            <li>Studio setup & backdrops</li>
+            <li>Video production gear</li>
+            <li>Short-term & long-term hire</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-ico">📦</span>
+        <div>
+          <h3>Business Support Services</h3>
+          <p>Strategic business support for entrepreneurs and SMEs — from branding and content to business revival programs and funding readiness preparation.</p>
+          <ul>
+            <li>Brand identity development</li>
+            <li>Digital marketing strategy</li>
+            <li>Business documentation & structuring</li>
+            <li>Business revival programs</li>
+            <li>Funding readiness preparation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap dark" style="text-align:center;">
+    <h2 class="section-title">Need something specific?</h2>
+    <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.6);max-width:500px;margin:20px auto 40px;line-height:1.75;">
+      Our services are flexible and can be tailored to your organisation's needs. Let's talk about what would work for you.
+    </p>
+    <button class="btn-primary" onclick="showPage('contact')">Get In Touch</button>
+  </section>
+
+</div>
+
+<!-- ======================== IMPACT PAGE ======================== -->
+<div class="page" id="page-impact">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Our Impact</div>
+      <h1>Real people.<br><em>Real change.</em></h1>
+      <p>Impact you can measure, in lives you can name — and a model built to make it permanent.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap green">
+    <div class="section-label">The Numbers</div>
+    <h2 class="section-title">Impact that compounds.</h2>
+    <div class="impact-numbers">
+      <div class="impact-block">
+        <span class="impact-num">500+</span>
+        <div class="impact-desc">Individuals trained, engaged, and connected through training programs, community engagements, and events</div>
+      </div>
+      <div class="impact-block">
+        <span class="impact-num">70%</span>
+        <div class="impact-desc">Graduate employment or entrepreneurship rate — the metric we track and keep improving</div>
+      </div>
+      <div class="impact-block">
+        <span class="impact-num">200K+</span>
+        <div class="impact-desc">Community members in the Nakuru City Moms and Dads network — Meta recognised</div>
+      </div>
+      <div class="impact-block">
+        <span class="impact-num">26</span>
+        <div class="impact-desc">NITA-certified courses across six creative schools</div>
+      </div>
+      <div class="impact-block">
+        <span class="impact-num">4th</span>
+        <div class="impact-desc">Edition of the Nakuru Entrepreneur Awards — Kenya's creative entrepreneurs celebrated</div>
+      </div>
+      <div class="impact-block">
+        <span class="impact-num">6</span>
+        <div class="impact-desc">Creative schools delivering income-generating skills across Kenya's most in-demand sectors</div>
+      </div>
+    </div>
+    <p class="impact-story">
+      These numbers don't come from a pitch deck. They come from <strong style="color:var(--gold-light);">women who now run salons.</strong> From young people who now shoot weddings and events. From entrepreneurs who walked in with raw talent and walked out with a business, a brand, and a plan. That's what Pheel is built to do — and we're just getting started.
+    </p>
+  </section>
+
+  <section class="section-wrap off">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">The strong emphasis<br>on women.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;align-items:center;">
+      <div>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;margin-bottom:22px;">
+          A significant portion of Pheel Creations Hub participants are women — reflecting the hub's strong and deliberate commitment to women's economic empowerment.
+        </p>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;margin-bottom:22px;">
+          This isn't a tagline. It's built into the way we design our programs, set our schedules, structure our pricing, and choose our partners. Women's empowerment is our daily reality.
+        </p>
+        <p style="font-size:17px;font-weight:300;color:var(--gray);line-height:1.85;">
+          Our hub also serves youth broadly — giving young people across Kenya a structured pathway from talent to income, reducing dependence on formal employment and building a generation of entrepreneurs and creative professionals.
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--green);color:var(--white);padding:36px;border-radius:6px;">
+          <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--gold-light);">Women</div>
+          <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,0.7);margin-top:8px;line-height:1.6;">Majority of our participants — economic empowerment built into every program we run.</p>
+        </div>
+        <div style="background:var(--green-tint);border:1px solid var(--green);padding:36px;border-radius:6px;">
+          <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--green);">Youth Focus</div>
+          <p style="font-size:14px;font-weight:300;color:var(--gray);margin-top:8px;line-height:1.6;">Equipping young Kenyans with skills, business support, and the confidence to build sustainable livelihoods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap dark">
+    <div style="max-width:720px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">The Model That Makes It Last</div>
+      <h2 class="section-title">Built without grants.<br>Sustained by results.</h2>
+      <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.85;margin-top:28px;">
+        Pheel Creations Hub operates as a <strong style="color:var(--white);">self-sustaining social enterprise</strong> — without grants or donor dependency, funding itself through service revenue and strategic partnerships. When we grow revenue, we grow reach. That's the model that keeps impact permanent.
+      </p>
+      <br><br>
+      <button class="btn-primary" onclick="showPage('partners')">See Our Partners</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======================== PARTNERS PAGE ======================== -->
+<div class="page" id="page-partners">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Our Partners</div>
+      <h1>We don't work alone.<br><em>We build together.</em></h1>
+      <p>Strategic partnerships that amplify our reach, deepen our impact, and open real doors for our community.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap off">
+    <div class="section-label">Current Partners</div>
+    <h2 class="section-title">Who we work with.</h2>
+    <p class="partners-intro">
+      Our partnerships are not transactional. They are strategic relationships built around shared values — community empowerment, economic inclusion, and the belief that talent, properly supported, changes lives and economies.
+    </p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <h3>Haven of Community Empowerment</h3>
+        <p>A community-focused organisation aligned with Pheel's mission of empowering grassroots communities through sustainable programs and economic opportunities. Together we extend our reach and deepen our community impact.</p>
+        <span class="partner-tag">Community Empowerment</span>
+      </div>
+      <div class="partner-card">
+        <h3>MG iHub</h3>
+        <p>A hub partner working in the innovation and entrepreneurship space — complementing Pheel's incubation programs and broadening the ecosystem available to our entrepreneurs and creatives.</p>
+        <span class="partner-tag">Innovation & Entrepreneurship</span>
+      </div>
+      <div class="partner-card">
+        <h3>Women Like Us</h3>
+        <p>An organisation dedicated to women's empowerment and advancement — deeply aligned with Pheel's commitment to women's economic participation and leadership in the creative economy.</p>
+        <span class="partner-tag">Women's Empowerment</span>
+      </div>
+      <div class="partner-card">
+        <h3>Nakuru County Government — Department of External Resource Mobilization</h3>
+        <p>A key institutional relationship that connects Pheel's grassroots work to county-level policy, resource mobilization opportunities, and the broader economic development agenda for the region.</p>
+        <span class="partner-tag">Government & Policy</span>
+      </div>
+      <div class="partner-card" style="border-left-color:var(--gold);">
+        <h3>Forum for Action, Change & Transformation (FACT)</h3>
+        <p>A development partner supporting community-level action and transformation — working alongside Pheel to deliver programs that create measurable change for youth and women.</p>
+        <span class="partner-tag">Development Partner</span>
+      </div>
+      <div class="partner-card" style="border-left-color:var(--gold);">
+        <h3>ASSEK — Association of Start-Up & SME Enablers of Kenya</h3>
+        <p>Pheel is pursuing ASSEK membership to connect our grassroots work with larger ecosystem conversations, access collaboration opportunities, and position Pheel within Kenya's national startup and SME enabler landscape.</p>
+        <span class="partner-tag">Ecosystem Development</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap dark" style="text-align:center;">
+    <div class="section-label" style="justify-content:center;">Partnerships</div>
+    <h2 class="section-title">Want to partner<br>with Pheel?</h2>
+    <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.6);max-width:540px;margin:24px auto 40px;line-height:1.75;">
+      We're open to partnerships with organisations, corporates, development partners, and institutions that share our commitment to creative economy development, youth empowerment, and women's economic inclusion.
+    </p>
+    <button class="btn-primary" onclick="showPage('contact')">Start a Conversation</button>
+  </section>
+
+</div>
+
+<!-- ======================== CONTACT PAGE ======================== -->
+<div class="page" id="page-contact">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Get In Touch</div>
+      <h1>Let's build<br><em>something together.</em></h1>
+      <p>Whether you're a potential student, partner, sponsor, investor, or organisation looking to collaborate — we want to hear from you.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap dark">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Find us.</h3>
+        <div class="contact-detail">
+          <span class="contact-ico">📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>Nakuru, Kenya<br>Serving creatives and entrepreneurs nationwide</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-ico">🏫</span>
+          <div>
+            <h4>The Hub</h4>
+            <p>Pheel Creations Hub<br>Home for Creativity, Empowerment & Innovation</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-ico">🏆</span>
+          <div>
+            <h4>Flagship Event</h4>
+            <p>Nakuru Entrepreneur Awards<br>4th Edition</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-ico">👥</span>
+          <div>
+            <h4>Community</h4>
+            <p>Nakuru City Moms and Dads<br>200,000+ members · Meta Recognised</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-ico">📞</span>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <p><a href="tel:+254714029656" style="color:var(--gold-light);text-decoration:none;font-size:20px;font-weight:600;font-family:'Playfair Display',serif;">0714 029 656</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-box">
+        <h3>Send us a message.</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>I am a...</label>
+          <select>
+            <option value="">Select one</option>
+            <option>Prospective Student</option>
+            <option>Business Owner / Entrepreneur</option>
+            <option>Organisation / NGO</option>
+            <option>Corporate Partner</option>
+            <option>Government / Institution</option>
+            <option>Investor / Funder</option>
+            <option>Media / Press</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What brings you here?</label>
+          <select>
+            <option value="">Select one</option>
+            <option>Enrol in a course</option>
+            <option>Hire the training facility</option>
+            <option>Photography / Videography services</option>
+            <option>Co-working space</option>
+            <option>Partnership / Collaboration</option>
+            <option>Sponsorship / Funding</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea placeholder="Tell us more about what you need..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;" onclick="handleFormSubmit()">Send Message →</button>
+        <p id="form-success" style="display:none;margin-top:16px;color:var(--green-light);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;">✓ MESSAGE RECEIVED — WE'LL BE IN TOUCH SHORTLY</p>
+      </div>
+    </div>
+  </section>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div>
-    <div class="footer-brand">Pheel <span>Creations</span> Hub</div>
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <div class="footer-logo-text">Pheel <span>Creations</span> Hub</div>
+      <span class="footer-tagline">Home for Creativity, Empowerment & Innovation</span>
+      <p>A creative and innovation ecosystem that equips individuals with skills, supports business growth, and connects them to opportunities — with a strong focus on women and youth.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('whatwedo')">What We Do</a></li>
+        <li><a onclick="showPage('schools')">Our Schools</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('impact')">Impact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a onclick="showPage('schools')">Creative Arts & Design</a></li>
+        <li><a onclick="showPage('schools')">Media & Digital Content</a></li>
+        <li><a onclick="showPage('schools')">Fashion, Beauty & Lifestyle</a></li>
+        <li><a onclick="showPage('schools')">Culinary & Hospitality</a></li>
+        <li><a onclick="showPage('schools')">Design & Environment</a></li>
+        <li><a onclick="showPage('schools')">Business Development</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a onclick="showPage('partners')">Our Partners</a></li>
+        <li><a onclick="showPage('contact')">Get In Touch</a></li>
+        <li><a onclick="showPage('contact')">Partner With Us</a></li>
+        <li><a onclick="showPage('contact')">Book a Space</a></li>
+        <li><a onclick="showPage('contact')">Enrol Now</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-info">
-    Nakuru, Kenya<br>
-    NITA Reg: NITA/LEVY/FRBA/24308<br>
-    KRA PIN: P052264333V
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 Pheel Creations Hub. All rights reserved.</div>
+    <div class="footer-reg">
+      <a href="tel:+254714029656" style="color:rgba(255,255,255,0.4);text-decoration:none;">📞 0714 029 656</a>
+    </div>
   </div>
 </footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-links li a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+
+function handleFormSubmit() {
+  const success = document.getElementById('form-success');
+  success.style.display = 'block';
+  setTimeout(() => { success.style.display = 'none'; }, 5000);
+}
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pillar-card, .school-card, .service-item, .partner-card, .strategy-card, .sustain-card, .diff-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
